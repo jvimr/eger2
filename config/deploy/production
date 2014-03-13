@@ -1,0 +1,7 @@
+set :rails_env,       "production"
+
+default_environment["RAILS_ENV"] = 'production'
+
+#set :branch, "origin/issue-322"
+set :branch, "origin/master"
+#set :branch, "origin/production"
