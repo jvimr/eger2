@@ -1,0 +1,29 @@
+<small>
+[<%= @test_page.author %>: <%= @test_page.name %> ] 	
+</small>
+
+<h2><b><%= @test_page.description %></b></h2>
+
+
+<p><span class="navod">Lesen Sie den Text und finden Sie im Text richtige antworeten. Wenn alle Fragen beantwortet werden, klicken Sie auf ABSENDEN, die Übung wird automatisch korrigiert. Die Tabelle zeigt Ihnen Ihr Ergebnis. Jetzt können Sie Ihre Antworten korrigieren (die richtig beantwortete Aussagen sind „passiv“ markiert, die falsch beantworteten Fragen sind „aktiv“ geblieben.
+
+</span></p>
+
+<div class="test_text">
+<%= @test_page.top_text %>
+</div>
+<hr />
+
+<% form_tag :action => 'texte_eval', :id => @test_page do %>
+<div class="test_text">
+<%= @test_page.test_text %>
+</div>  
+	<br />
+	
+  <%= submit_tag '[Absenden]' %>
+<% end %>
+
+<%= link_to '&lt; Zurück', {:action => 'texte'}, :class=>'menu' %>
+
+
+

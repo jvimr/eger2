@@ -1,0 +1,8 @@
+<h2>Nova aktualita</h2>
+
+<% form_tag :action => 'create' do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag "[Ulozit]" %>
+<% end %>
+
+<%= link_to 'Zpet', :action => 'list' %>

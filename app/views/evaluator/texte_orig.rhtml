@@ -1,0 +1,41 @@
+<h2>Gramatische tests</h2>
+
+<table border="0" width="100%">
+
+<tr  bgcolor="#e7f1f1" align="left" >
+	<th >Autor</th><th>Name</th><th>Fertig</th><th>Skore</th><th> &nbsp;</th></tr>
+
+<% for text in @test_pages %>
+
+  <tr class="tabitems">
+     <td><%= text.author %></td>	
+	   <td><%= text.name %></td>
+     <td align="center"> <%= text.fertig ? "J" : "N" %> </td>
+		 <td align="center"> <%= text.skore %> </td>
+     <td> 
+		 <%= link_to "[korrigieren]", { :action=> 'texte_orig_test', :id=>text } unless text.fertig || text.skore <= 0.0%>
+		 <%= link_to "[testen]", { :action=> 'texte_orig_test', :id=>text, :clearcache=>true } %>
+		 </td>
+	</tr>
+	
+	
+<% end %>
+
+</table>
+
+<%= 
+link_to 'Previous page', { :page => @test_pages_pages.current.previous }, 'class'=>'menu' if @test_pages_pages.current.previous 
+%>
+<%= link_to 'Next page', { :page => @test_pages_pages.current.next }, 'class'=>'menu' if @test_pages_pages.current.next 
+%> 
+<% if @test_pages_pages.current.next || @test_pages_pages.current.previous %>
+<br />
+<% end %>
+
+<hr />
+<div class="tabitems">
+[ Insgesamt: <%= pluralize @test_pages.length, 'Test' %>, <!--attempted <%= @attempted_tests_count %> Test(en)  ( <%= @attempted_tests_percent %>),-->   <%= pluralize @total_questions_count, 'Frage', 'Fragen' %> ]
+<br/>
+[ Fertig: <%= pluralize @completed_tests_count, 'Test', 'Tests' %>  ( <%= @completed_tests_percent %> ), <%= pluralize @correct_answers_count, 'richtig Antwort', 'richtige Antworten' %>, Skore : <%= @total_score %>] 
+</div>
+

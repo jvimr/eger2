@@ -1,0 +1,31 @@
+<h2>Atkuality</h2> (zobrazuji se na <%= link_to 'uvodni strance testovani', {:action=>'home', :controller=>'evaluator'}, {"target"=>"_blank"} %>)
+<br />
+<br />
+<table>
+ <!-- <tr>
+  
+    <th>Text</th>
+    <th>&nbsp;</th>
+		<th>&nbsp;</th>
+  </tr>  -->
+  
+<% for actual in @actuals %>
+  <tr>
+  
+	<!-- <td><%= actual.position %></td> -->
+    <td><%= actual.text %></td>
+  
+  <!--  <td><%= link_to 'Show', :action => 'show', :id => actual %></td> -->
+    <td><%= link_to '[Upravit]', :action => 'edit', :id => actual %></td>
+    <td><%= link_to '[Smazat]', { :action => 'destroy', :id => actual }, :confirm => 'Opravdu smazat?', :method => :post %></td>
+		<td><small> <%= link_to "^", { :action=> 'up', :id=>actual }  %>&nbsp;<%= link_to "v", { :action=> 'down', :id=>actual }  %></small> &nbsp;</td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @actual_pages.current.previous } if @actual_pages.current.previous %>
+<%= link_to 'Next page', { :page => @actual_pages.current.next } if @actual_pages.current.next %> 
+
+<br />
+
+<%= link_to 'Nova aktualita', :action => 'new' %>

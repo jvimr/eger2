@@ -1,0 +1,37 @@
+<table border="1" class="tabitems" width="100%"'>
+
+<tr>
+	
+	<th >typ</th>
+	<th >autor</th>
+	<th>nazev</th>
+  <th>&nbsp;</th>	
+</tr>
+
+<% for text in @test_pages %>
+
+  <tr class="tabitems">
+  
+		 <td><%= text.test_type.name%></td>
+     <td><%= text.author %></td>	
+	   <td><%= text.name %></td>
+     
+     <td> 
+		   <small> <%= link_to "^", { :action=> 'up', :id=>text }  %><%= link_to "v", { :action=> 'down', :id=>text }  %></small> &nbsp;
+				
+		    <%= link_to "upravit", { :action=> 'edit', :id=>text }  %> &nbsp; 
+		    <%= link_to "zobrazit", { :action=> 'view', :id=>text }  %> &nbsp;
+				<%= link_to 'smazat', { :action => 'destroy', :id => text }, :confirm => 'Opravdu smazat?', :method => :post %>
+		 </td>
+	</tr>
+	
+	
+<% end %>
+
+</table>
+
+<%= 
+link_to 'Previous page', { :page => @test_pages_pages.current.previous } if @test_pages_pages.current.previous 
+%>
+<%= link_to 'Next page', { :page => @test_pages_pages.current.next } if @test_pages_pages.current.next 
+%> 

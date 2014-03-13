@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+	
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" >
+  <title> <%= @title %></title>
+  <!-- <%= stylesheet_link_tag 'styly_ove' %> -->
+	<link href="<%= stylesheet_path 'styly_ove' %>" media="screen" rel="Stylesheet" type="text/css" >
+	
+	<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+  <link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon"> 
+</head>
+<body  text="Gray" link="Green" vlink="Gray" alink="Gray" >
+	
+<table 
+ width="100%"
+ border="0" cellpadding="0" align="left" class="outer-frame">
+   <tr align="left" valign="top">
+     <td height="150" colspan="3" align="left" valign="top" >
+
+<img src="/images/head_wd.jpg" height="150" width="900" alt="head logo">
+  </td></tr>
+
+
+<tr > <td colspan="3" bgcolor="#a7c5c0">
+
+
+<div class="vmenu">
+<%= 
+ 
+  l = ""
+  @odkazy.each do |x|
+    
+		l += "&nbsp;[<a href=\"#{x[1]}\" class=\"vmenu\">#{x[0]}</a>]&nbsp;"
+  end
+   l
+%>
+</div>
+
+</td></tr>
+	<tr align="left" valign="top">
+	  <td width="200" height="250" colspan="0" rowspan="0" align="right" valign="top" >
+
+<table cellpadding="10"  width="200">
+  <tr valign="top">
+    <td align="right">
+		
+		<%= render 'evaluator/_leftnav_eval', { :odkazy=> @odkazy } %>
+		
+		
+		</td></tr></table>
+		
+		</td>
+		
+		<!-- <td width="1px" bgcolor="#f1f1e5" >&nbsp;</td> -->
+		
+		    <td width="100%" height="100%" colspan="0" rowspan="0" align="left" valign="top">
+	<!-- 	<td class="obsah" width="80%" valign="top">  -->
+<p style="color: green"><%= flash[:notice] %></p>
+      <table width="100%" cellpadding="10"><tr><td>
+<%= yield  %>
+      </td> </tr>
+      </table>
+			
+		</td>
+	</tr>
+
+
+<tr >
+<td colspan="2">
+<!-- <hr > -->
+<div class="paticka">(C) 2007  alle Rechte vorbehalten, <a href="<%= @odkazy[1][1] %>" ><%= @odkazy[1][0] %> FEK ZCU</a></div>
+
+</td>
+</tr>
+</table>
+</body>
+</html>
