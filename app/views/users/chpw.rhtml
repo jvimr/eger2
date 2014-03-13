@@ -1,7 +1,7 @@
 <%= start_form_tag :action=> "chpw" %>
 
 <div title="Change password" id="chpwform" class="form">
-  <h3>Zmena hesla uzivatele <%= @session['user'].login %></h3>
+  <h3>Zmena hesla uzivatele <%= session['user'].login %></h3>
   <%= error_messages_for 'chpw' %><br/>
   
   <label for="chpw_old_password">Stare heslo:</label><br/>
